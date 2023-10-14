@@ -2,8 +2,18 @@ This will be the index page of the project, and someone will start write the pro
 
 Todos:
 - (Video demo)
-- Problem statement
-- Inspiration
+- Problem statement - 
+
+Have you ever encountered a writers block? Have you ever been unsure how to overcome this? 
+
+
+
+
+
+- Inspiration 
+Three of us had writers blocks, and JO's wife has written a book
+
+
 - Solution (Project Description)
 - The process/workflow
 - How we built it: (aim for prize!)
