@@ -1,23 +1,53 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
 
 function App() {
+  const [selectedCharacter, setSelectedCharacter] = useState("");
+  const [keyword, setKeyword] = useState("");
+
+  const handleDropdownChange = (e) => {
+    setSelectedCharacter(e.target.value);
+  };
+
+  const handleKeywordChange = (e) => {
+    setKeyword(e.target.value);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div className="container">
+      <div className="left-column">
+        {/* Chatting window or file selection */}
+        <div className="chat-window">
+          Chatting window or file selection goes here...
+        </div>
+      </div>
+      <div className="center-column">
+        {/* Dropdown for selecting characters */}
+        <select
+          className="character-dropdown"
+          value={selectedCharacter}
+          onChange={handleDropdownChange}
         >
-          Learn React
-        </a>
-      </header>
+          <option value="character1">Character 1</option>
+          {/* Add more options as needed */}
+        </select>
+
+        {/* Input with keywords */}
+        <div className="keyword-input">
+          <input
+            type="text"
+            placeholder="Enter keyword..."
+            value={keyword}
+            onChange={handleKeywordChange}
+          />
+          <button>Submit</button>
+        </div>
+
+        {/* Placeholder for graphics */}
+        <div className="graphic-placeholder">Graphic 1 placeholder</div>
+        <div className="graphic-placeholder">Graphic 2 placeholder</div>
+        {/* Add more graphics placeholders as needed */}
+      </div>
     </div>
   );
 }
