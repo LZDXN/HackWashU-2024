@@ -4,7 +4,7 @@ Todos:
 - (Video demo)
 - Problem statement - 
 
-Have you ever encountered a writers block? Have you ever been unsure how to overcome this? 
+Have you ever encountered a writers block? Have you ever had trouble depicting a specific scene in your head? Have you ever been unsure how to overcome this? Well we have created an webapp that helps you overcome this block and shows you a possiblity of different options to depict this. 
 
 
 
@@ -37,6 +37,11 @@ Three of us had writers blocks, and JO's wife has written a book
 ## Best Use of MongoDB Atlas
 ## Best Use of Google Cloud
 # Design
+
+
+
+
+
 # Future Todo List
 # Build With
 # Try It Out
