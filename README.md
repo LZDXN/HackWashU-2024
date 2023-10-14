@@ -10,7 +10,10 @@ Have you ever encountered a writers block? Have you ever been unsure how to over
 
 
 
-- Inspiration
+- Inspiration 
+Three of us had writers blocks, and JO's wife has written a book
+
+
 - Solution (Project Description)
 - The process/workflow
 - How we built it: (aim for prize!)
