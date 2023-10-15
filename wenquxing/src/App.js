@@ -1,70 +1,57 @@
 import React, { useState } from "react";
-import "./App.css"; // Ensure to style your components appropriately
-
-// Additional Component Imports
+import "./App.css";
 import UserAuth from "./components/UserAuth";
 import FileEditor from "./components/FileEditor";
 import CharacterSelector from "./components/CharacterSelector";
 import ImageGenerator from "./components/ImageGenerator";
+import FileSelector from "./components/FileSelector"; // Ensure to create this component
 
 function App() {
   const [user, setUser] = useState(null);
-
-  const [mdFile, setMdFile] = useState(""); // Markdown File Content
-
+  const [mdFile, setMdFile] = useState("");
   const [selectedCharacters, setSelectedCharacters] = useState([]);
-
   const [generatedImage, setGeneratedImage] = useState(null);
+  const [selectedFile, setSelectedFile] = useState(null); // New state for selected file
 
-  // Handle User Authentication (Sign Up, Sign In, Sign Out)
-
-  const handleUserAuth = (userData) => {
-    // Implement authentication logic here
-    // setUser(userData);
-  };
-
-  // Handle Markdown File Creation, Edition, and Deletion
-
-  const handleMdFileChange = (newMdFile) => {
-    // Implement file handling logic here
-    // setMdFile(newMdFile);
-  };
-
-  // Handle Character Selection and Management
-
-  const handleCharacterChange = (newCharacterData) => {
-    // Implement character handling logic here
-    // setSelectedCharacters(newCharacterData);
-  };
-
-  // Handle Image Generation and Interaction with API
-
-  const handleImageGeneration = (prompt) => {
-    // Implement API interaction and image generation logic here
-    // setGeneratedImage(generatedImageFromAPI);
-  };
+  const handleUserAuth = (userData) => setUser(userData);
+  const handleMdFileChange = (newMdFile) => setMdFile(newMdFile);
+  const handleCharacterChange = (newCharacterData) =>
+    setSelectedCharacters(newCharacterData);
+  const handleImageGeneration = (generatedImageData) =>
+    setGeneratedImage(generatedImageData);
+  const handleFileSelect = (selectedFileData) =>
+    setSelectedFile(selectedFileData); // New handler
 
   return (
     <div className="App">
-      {/* User Authentication Component */}
-      <UserAuth onUserAuth={handleUserAuth} user={user} />
+      <nav className="navbar">
+        <div className="nav-title">Wenquxing</div>
+        <UserAuth onUserAuth={handleUserAuth} user={user} />
+      </nav>
 
-      {/* Markdown File Editor Component */}
-      <FileEditor onMdFileChange={handleMdFileChange} mdFile={mdFile} />
+      <div className="content">
+        <div className="left-column">
+          <FileSelector
+            onFileSelect={handleFileSelect}
+            selectedFile={selectedFile}
+          />
+        </div>
 
-      {/* Character Selector and Manager Component */}
-      <CharacterSelector
-        onCharacterChange={handleCharacterChange}
-        selectedCharacters={selectedCharacters}
-      />
+        <div className="center-column">
+          <CharacterSelector
+            onCharacterChange={handleCharacterChange}
+            selectedCharacters={selectedCharacters}
+          />
+          <FileEditor onMdFileChange={handleMdFileChange} mdFile={mdFile} />
+        </div>
 
-      {/* Image Generator and API Interaction Component */}
-      <ImageGenerator
-        onImageGeneration={handleImageGeneration}
-        generatedImage={generatedImage}
-      />
-
-      {/* Add Additional Components as Needed */}
+        <div className="right-column">
+          <ImageGenerator
+            onImageGeneration={handleImageGeneration}
+            generatedImage={generatedImage}
+          />
+        </div>
+      </div>
     </div>
   );
 }
