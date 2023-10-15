@@ -37,10 +37,10 @@ stability_api = client.StabilityInference(
 # prompt= [generation.Prompt(text="beautiful night sky above japanese town, anime style",parameters=generation.PromptParameters(weight=1)),
 # generation.Prompt(text="clouds",parameters=generation.PromptParameters(weight=-1))],
 
-def genImgWithCustomPrompt():
+def genImgWithCustomPrompt(userPrompt):
     # Set up our initial generation parameters.
     answers = stability_api.generate(
-        prompt="beautiful night sky above sweden town, ghibli style",
+        prompt=userPrompt,
 
         # If a seed is provided, the resulting generated image will be deterministic.
         # What this means is that as long as all generation parameters remain the same, you can always recall the same image simply by generating it again.
@@ -74,6 +74,7 @@ def genImgWithCustomPrompt():
 
 
 def main():
-    genImgWithCustomPrompt()
+    userPrompt="beautiful night sky above sweden town, ghibli style"
+    genImgWithCustomPrompt(userPrompt)
 if __name__ == '__main__':
     main()
