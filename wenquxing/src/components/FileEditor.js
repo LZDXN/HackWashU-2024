@@ -1,55 +1,32 @@
+// FileEditor.js
 import React, { useState, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import "../App.css";
+import storyData from "../data/story.json";
 
 const FileEditor = ({ selectedFile }) => {
   const [content, setContent] = useState("");
   const [isPreview, setIsPreview] = useState(false);
 
   useEffect(() => {
-    // Fetch the file content from the server when a file is selected
-    const fetchFileContent = async () => {
-      try {
-        const response = await fetch(
-          `http://localhost:3000/file/${selectedFile}`
-        );
-        const file = await response.json();
-        setContent(file.body);
-      } catch (error) {
-        console.error("Error fetching file content:", error);
-      }
-    };
-    if (selectedFile) {
-      fetchFileContent();
-    } else {
-      setContent("");
+    if (!selectedFile) {
+      setContent(storyData.content);
     }
   }, [selectedFile]);
-
-  const handleContentChange = async (e) => {
-    const newContent = e.target.value;
-    setContent(newContent);
+  const handleContentChange = (e) => {
+    setContent(e.target.value);
   };
 
-  const handleContentSave = async () => {
-    try {
-      await fetch(`http://localhost:3000/file/${selectedFile}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ body: content }),
-      });
-      alert("File saved successfully!");
-    } catch (error) {
-      console.error("Error saving file content:", error);
-    }
+  const handleContentSave = () => {
+    alert(
+      "File saved successfully! (Note: Changes are not persistent and will be lost on refresh)"
+    );
   };
 
   return (
     <div className="file-editor">
       <div className="editor-header">
-        <h2 className="editor-title">
-          Editing: {selectedFile || "No file selected"}
-        </h2>
+        <h2 className="editor-title">Editing: {selectedFile || ""}</h2>
         <button
           onClick={() => setIsPreview(!isPreview)}
           className="toggle-preview-btn"

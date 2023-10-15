@@ -1,0 +1,5 @@
+{
+    "initial": ["no water", "only rock", "sandy road", "thirsty"],
+    "afterLLM": ["The sandy road", "seemingly never ending path", "perils and promise", "no source of water", "sun beating down", "nothing but rock", "desperate thirst", "journey was hard", "finding respite"]
+  }
+  

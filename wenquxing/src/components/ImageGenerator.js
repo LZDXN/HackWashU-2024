@@ -1,48 +1,40 @@
+// ImageGenerator.js
 import React, { useState } from "react";
 import "../App.css";
+import keywordsData from "../data/keywords.json";
 
-const ImageGenerator = ({ onImageGeneration, generatedImages }) => {
-  const [prompt, setPrompt] = useState("");
+const ImageGenerator = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [images, setImages] = useState([]);
 
-  const handlePromptChange = (e) => {
-    setPrompt(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Your API call logic to generate images
-    onImageGeneration(prompt);
+  const handleButtonClick = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setImages(["1.jpg", "2.jpg", "3.jpg"]);
+      setIsLoading(false);
+    }, 3000);
   };
 
   return (
     <div className="image-generator">
-      <div className="prompt-container">
-        <label htmlFor="prompt">Image Prompt: </label>
-        <input
-          type="text"
-          id="prompt"
-          value={prompt}
-          onChange={handlePromptChange}
-          className="prompt-input"
-        />
-        <button onClick={handleSubmit} className="generate-img-btn">
-          Generate Image
-        </button>
-      </div>
-      <div className="img-container">
-        {generatedImages && generatedImages.length > 0 ? (
-          generatedImages.map((imgSrc, index) => (
+      <h3>Keywords</h3>
+      <p>Initial: {keywordsData.initial.join(", ")}</p>
+      {/* <p>After LLM: {keywordsData.afterLLM.join(", ")}</p> */}
+      <button onClick={handleButtonClick}>Generate Images</button>
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <div className="image-container">
+          {images.map((image, index) => (
             <img
               key={index}
-              src={imgSrc}
-              alt={`Generated ${index}`}
-              className="generated-img"
+              src={process.env.PUBLIC_URL + "/img/" + image}
+              alt={`Generated ${index + 1}`}
+              className="generated-image"
             />
-          ))
-        ) : (
-          <div className="img-placeholder">Image will be displayed here</div>
-        )}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

@@ -216,6 +216,11 @@ label, button {
   border-radius: 8px;
 }
 
+.image-container img {
+  max-width: 100%;
+  height: auto;
+}
+
 
 .editor-header {
   display: flex;
