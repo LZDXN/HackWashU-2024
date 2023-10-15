@@ -1,34 +1,48 @@
 import React, { useState } from "react";
+import "../App.css";
 
-const ImageGenerator = ({ onImageGeneration, generatedImage }) => {
+const ImageGenerator = ({ onImageGeneration, generatedImages }) => {
   const [prompt, setPrompt] = useState("");
 
   const handlePromptChange = (e) => {
     setPrompt(e.target.value);
   };
 
-  const handleImageGeneration = () => {
-    // Implement API call logic here
-    // onImageGeneration(generatedImageDataFromAPI);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Your API call logic to generate images
+    onImageGeneration(prompt);
   };
 
   return (
     <div className="image-generator">
-      <h2>Image Generator</h2>
-      <textarea
-        value={prompt}
-        onChange={handlePromptChange}
-        placeholder="Enter the prompt for image generation..."
-      />
-      <button onClick={handleImageGeneration}>Generate Image</button>
-      {generatedImage && (
-        <div className="generated-image">
-          <h3>Generated Image:</h3>
-          {/* Display the generated image here */}
-          {/* Example assuming generatedImage is a URL: */}
-          <img src={generatedImage} alt="Generated" />
-        </div>
-      )}
+      <div className="prompt-container">
+        <label htmlFor="prompt">Image Prompt: </label>
+        <input
+          type="text"
+          id="prompt"
+          value={prompt}
+          onChange={handlePromptChange}
+          className="prompt-input"
+        />
+        <button onClick={handleSubmit} className="generate-img-btn">
+          Generate Image
+        </button>
+      </div>
+      <div className="img-container">
+        {generatedImages && generatedImages.length > 0 ? (
+          generatedImages.map((imgSrc, index) => (
+            <img
+              key={index}
+              src={imgSrc}
+              alt={`Generated ${index}`}
+              className="generated-img"
+            />
+          ))
+        ) : (
+          <div className="img-placeholder">Image will be displayed here</div>
+        )}
+      </div>
     </div>
   );
 };

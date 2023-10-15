@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./UserAuth.css";
+import "../App.css"; // Importing unified CSS
 
 const UserAuth = ({ onUserAuth }) => {
   const [username, setUsername] = useState("");
@@ -7,44 +7,38 @@ const UserAuth = ({ onUserAuth }) => {
 
   const handleSignIn = (e) => {
     e.preventDefault();
-    // Implement API call for sign-in here
-    // On success:
-    // onUserAuth({ username, /* other user data */ });
+    // Handle Sign In Logic
+    onUserAuth(username);
   };
 
-  const handleRegister = (e) => {
+  const handleSignUp = (e) => {
     e.preventDefault();
-    // Implement API call for registration here
-    // On success:
-    // onUserAuth({ username, /* other user data */ });
+    // Handle Sign Up Logic
+    onUserAuth(username);
   };
 
   return (
     <div className="user-auth">
-      <form onSubmit={handleSignIn}>
-        <label>
-          Username:
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Password:
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit">Sign In</button>
-        <button type="button" onClick={handleRegister}>
-          Register
-        </button>
-      </form>
+      <input
+        type="text"
+        placeholder="Username"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+        required
+      />
+      <input
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        required
+      />
+      <button type="button" onClick={handleSignIn}>
+        Sign In
+      </button>
+      <button type="button" onClick={handleSignUp}>
+        Register
+      </button>
     </div>
   );
 };
