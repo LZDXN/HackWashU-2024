@@ -1,22 +1,43 @@
 import React, { useState } from "react";
+import ReactMarkdown from "react-markdown";
 
-const FileEditor = ({ onMdFileChange, mdFile }) => {
-  const [editorContent, setEditorContent] = useState(mdFile);
+const FileEditor = ({ onMdFileChange, mdFile, fileName, onFileNameChange }) => {
+  const [content, setContent] = useState(mdFile || "");
+  const [isPreview, setIsPreview] = useState(false);
 
   const handleContentChange = (e) => {
-    setEditorContent(e.target.value);
-    onMdFileChange(e.target.value);
+    const newContent = e.target.value;
+    setContent(newContent);
+    onMdFileChange(newContent);
+  };
+
+  const handleFileNameChange = (e) => {
+    onFileNameChange(e.target.value);
   };
 
   return (
     <div className="file-editor">
-      <h2>Markdown Editor</h2>
-      <textarea
-        value={editorContent}
-        onChange={handleContentChange}
-        placeholder="Write your markdown content here..."
+      <input
+        type="text"
+        value={fileName}
+        onChange={handleFileNameChange}
+        placeholder="File Name"
       />
-      {/* You may add additional features like file saving, deletion, etc. */}
+      <button onClick={() => setIsPreview(!isPreview)}>
+        {isPreview ? "Switch to Editor" : "Switch to Preview"}
+      </button>
+      <div className="editor-container">
+        {isPreview ? (
+          <ReactMarkdown className="markdown-preview" children={content} />
+        ) : (
+          <textarea
+            value={content}
+            onChange={handleContentChange}
+            className="markdown-input"
+            style={{ width: "100%", height: "100%" }}
+          />
+        )}
+      </div>
     </div>
   );
 };
