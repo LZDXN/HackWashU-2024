@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@hashgraph/sdk": "^2.35.0",
     "openai": "^4.12.1"
   }
 }
