@@ -51,7 +51,20 @@ Back end:
   - Best Use of MongoDB Atlas
   - Best Use of Google Cloud
 - Design
+
 - Future todo list
+
+One more input, we want to allow to user to add desired characters, and description of characters. So that user can have more detailed image generated to get inspired. 
+
+
+-	Why this is important. 
+
+This is important because almost everyone who has ever attempted to write a novel has at one point in time has faced a writing block when trying to describe a scene. Our webapp enables writers to overcome this block by using AI to depict an image that helps them imagine a particular scene. It is often said that perhaps one day the writers’ jobs will disappear due to the rise of AI, however we demonstrate that writers can use AI help them become better writers. 
+
+
+
+
+
 - Build with
 - Try it out
 
