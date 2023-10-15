@@ -1,53 +1,66 @@
 import React, { useState } from "react";
-import "./App.css";
+import "./App.css"; // Ensure to style your components appropriately
+
+// Additional Component Imports
+import UserAuth from "./components/UserAuth";
+import FileEditor from "./components/FileEditor";
+// import CharacterSelector from "./components/CharacterSelector";
+// import ImageGenerator from "./components/ImageGenerator";
 
 function App() {
-  const [selectedCharacter, setSelectedCharacter] = useState("");
-  const [keyword, setKeyword] = useState("");
+  const [user, setUser] = useState(null);
 
-  const handleDropdownChange = (e) => {
-    setSelectedCharacter(e.target.value);
+  const [mdFile, setMdFile] = useState(""); // Markdown File Content
+
+  const [selectedCharacters, setSelectedCharacters] = useState([]);
+
+  const [generatedImage, setGeneratedImage] = useState(null);
+
+  // Handle User Authentication (Sign Up, Sign In, Sign Out)
+
+  const handleUserAuth = (userData) => {
+    // Implement authentication logic here
+    // setUser(userData);
   };
 
-  const handleKeywordChange = (e) => {
-    setKeyword(e.target.value);
+  // Handle Markdown File Creation, Edition, and Deletion
+
+  const handleMdFileChange = (newMdFile) => {
+    // Implement file handling logic here
+    // setMdFile(newMdFile);
+  };
+
+  // Handle Character Selection and Management
+
+  const handleCharacterChange = (newCharacterData) => {
+    // Implement character handling logic here
+    // setSelectedCharacters(newCharacterData);
+  };
+
+  // Handle Image Generation and Interaction with API
+
+  const handleImageGeneration = (prompt) => {
+    // Implement API interaction and image generation logic here
+    // setGeneratedImage(generatedImageFromAPI);
   };
 
   return (
-    <div className="container">
-      <div className="left-column">
-        {/* Chatting window or file selection */}
-        <div className="chat-window">
-          Chatting window or file selection goes here...
-        </div>
-      </div>
-      <div className="center-column">
-        {/* Dropdown for selecting characters */}
-        <select
-          className="character-dropdown"
-          value={selectedCharacter}
-          onChange={handleDropdownChange}
-        >
-          <option value="character1">Character 1</option>
-          {/* Add more options as needed */}
-        </select>
+    <div className="App">
+      {/* User Authentication Component */}
+      <UserAuth onUserAuth={handleUserAuth} user={user} />
 
-        {/* Input with keywords */}
-        <div className="keyword-input">
-          <input
-            type="text"
-            placeholder="Enter keyword..."
-            value={keyword}
-            onChange={handleKeywordChange}
-          />
-          <button>Submit</button>
-        </div>
+      {/* Markdown File Editor Component */}
+      <FileEditor onMdFileChange={handleMdFileChange} mdFile={mdFile} />
 
-        {/* Placeholder for graphics */}
-        <div className="graphic-placeholder">Graphic 1 placeholder</div>
-        <div className="graphic-placeholder">Graphic 2 placeholder</div>
-        {/* Add more graphics placeholders as needed */}
-      </div>
+      {/* 
+      Character Selector and Manager Component
+      <CharacterSelector onCharacterChange={handleCharacterChange} selectedCharacters={selectedCharacters} />
+      */}
+      {/* 
+      Image Generator and API Interaction Component
+      <ImageGenerator onImageGeneration={handleImageGeneration} generatedImage={generatedImage} />
+      */}
+      {/* Add Additional Components as Needed */}
     </div>
   );
 }
