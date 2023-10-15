@@ -1,0 +1,26 @@
+.character-selector {
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+  
+  .character-selector h2,
+  .character-selector h3 {
+    margin-bottom: 10px;
+  }
+  
+  .character-selector input,
+  .character-selector button {
+    margin-bottom: 10px;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+  }
+  
+  .character-selector button {
+    cursor: pointer;
+    background-color: #4caf50;
+    color: white;
+  }
+  

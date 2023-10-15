@@ -4,7 +4,7 @@ import "./App.css"; // Ensure to style your components appropriately
 // Additional Component Imports
 import UserAuth from "./components/UserAuth";
 import FileEditor from "./components/FileEditor";
-// import CharacterSelector from "./components/CharacterSelector";
+import CharacterSelector from "./components/CharacterSelector";
 // import ImageGenerator from "./components/ImageGenerator";
 
 function App() {
@@ -52,10 +52,12 @@ function App() {
       {/* Markdown File Editor Component */}
       <FileEditor onMdFileChange={handleMdFileChange} mdFile={mdFile} />
 
-      {/* 
-      Character Selector and Manager Component
-      <CharacterSelector onCharacterChange={handleCharacterChange} selectedCharacters={selectedCharacters} />
-      */}
+      {/* Character Selector and Manager Component */}
+      <CharacterSelector
+        onCharacterChange={handleCharacterChange}
+        selectedCharacters={selectedCharacters}
+      />
+
       {/* 
       Image Generator and API Interaction Component
       <ImageGenerator onImageGeneration={handleImageGeneration} generatedImage={generatedImage} />
