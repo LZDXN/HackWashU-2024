@@ -5,7 +5,7 @@ import "./App.css"; // Ensure to style your components appropriately
 import UserAuth from "./components/UserAuth";
 import FileEditor from "./components/FileEditor";
 import CharacterSelector from "./components/CharacterSelector";
-// import ImageGenerator from "./components/ImageGenerator";
+import ImageGenerator from "./components/ImageGenerator";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -58,10 +58,12 @@ function App() {
         selectedCharacters={selectedCharacters}
       />
 
-      {/* 
-      Image Generator and API Interaction Component
-      <ImageGenerator onImageGeneration={handleImageGeneration} generatedImage={generatedImage} />
-      */}
+      {/* Image Generator and API Interaction Component */}
+      <ImageGenerator
+        onImageGeneration={handleImageGeneration}
+        generatedImage={generatedImage}
+      />
+
       {/* Add Additional Components as Needed */}
     </div>
   );
