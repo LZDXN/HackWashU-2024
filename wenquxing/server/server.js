@@ -1,31 +1,11 @@
 const express = require("express");
-const { MongoClient } = require("mongodb");
-const Realm = require("realm");
-require("dotenv").config();
+const fs = require("fs");
+const path = require("path");
 
 const app = express();
 const PORT = 3000;
 
-const MONGODB_URI = process.env.MONGODB_URI;
-const REALM_APP_ID = process.env.REALM_APP_ID;
-
 app.use(express.json());
-
-// Realm Setup
-const realmApp = new Realm.App({ id: REALM_APP_ID });
-const credentials = Realm.Credentials.anonymous();
-
-// MongoDB Setup
-let db;
-MongoClient.connect(MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-  .then((client) => {
-    console.log("Connected to Database");
-    db = client.db("wenquxing");
-  })
-  .catch((error) => console.error(error));
 
 // Basic Authentication Middleware
 const basicAuth = (req, res, next) => {
@@ -45,27 +25,25 @@ const basicAuth = (req, res, next) => {
 // API Endpoints
 app.get("/files", basicAuth, async (req, res) => {
   try {
-    const user = await realmApp.logIn(credentials);
-    const filesCollection = db.collection("files");
-    const query = req.query.userId ? { user_id: req.query.userId } : {};
-    const files = await filesCollection.find(query).toArray();
+    const files = JSON.parse(
+      fs.readFileSync(path.join(__dirname, "files.json"), "utf8")
+    );
     res.json(files);
   } catch (err) {
-    console.error("Failed to log in", err);
+    console.error("Error reading files:", err);
     res.status(500).send(err);
   }
 });
 
 app.get("/file/:filename", async (req, res) => {
   try {
-    const user = await realmApp.logIn(credentials);
-    const filesCollection = db.collection("files");
-    const file = await filesCollection.findOne({
-      filename: req.params.filename,
-    });
+    const files = JSON.parse(
+      fs.readFileSync(path.join(__dirname, "files.json"), "utf8")
+    );
+    const file = files.find((f) => f.filename === req.params.filename);
     res.json(file);
   } catch (err) {
-    console.error("Failed to log in", err);
+    console.error("Error reading file:", err);
     res.status(500).send(err);
   }
 });
