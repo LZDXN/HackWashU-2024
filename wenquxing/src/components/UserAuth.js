@@ -1,21 +1,27 @@
 import React, { useState } from "react";
+import "./UserAuth.css";
 
 const UserAuth = ({ onUserAuth }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [isSignUp, setIsSignUp] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSignIn = (e) => {
     e.preventDefault();
-    // Implement API call for authentication here
+    // Implement API call for sign-in here
+    // On success:
+    // onUserAuth({ username, /* other user data */ });
+  };
+
+  const handleRegister = (e) => {
+    e.preventDefault();
+    // Implement API call for registration here
     // On success:
     // onUserAuth({ username, /* other user data */ });
   };
 
   return (
     <div className="user-auth">
-      <h2>{isSignUp ? "Sign Up" : "Sign In"}</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSignIn}>
         <label>
           Username:
           <input
@@ -34,11 +40,11 @@ const UserAuth = ({ onUserAuth }) => {
             required
           />
         </label>
-        <button type="submit">{isSignUp ? "Sign Up" : "Sign In"}</button>
+        <button type="submit">Sign In</button>
+        <button type="button" onClick={handleRegister}>
+          Register
+        </button>
       </form>
-      <button onClick={() => setIsSignUp(!isSignUp)}>
-        Switch to {isSignUp ? "Sign In" : "Sign Up"}
-      </button>
     </div>
   );
 };

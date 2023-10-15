@@ -1,34 +1,50 @@
 .user-auth {
-    padding: 20px;
-    margin: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    max-width: 300px;
-  }
-  
-  .user-auth h2 {
-    margin-bottom: 20px;
-  }
-  
-  .user-auth label {
-    display: block;
-    margin-bottom: 10px;
-  }
-  
-  .user-auth input {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border-radius: 4px;
-    border: 1px solid #ddd;
-  }
-  
-  .user-auth button {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    background-color: #4caf50;
-    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.user-auth form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-auth label {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.user-auth input {
+    padding: 5px;
+    margin: 0;
+}
+
+.user-auth button {
+    padding: 5px 10px;
     cursor: pointer;
-  }
-  
+}
+
+.switch-auth {
+    margin-left: 10px;
+}
+
+/* Breakpoint for smaller screens */
+@media (max-width: 768px) {
+    .user-auth {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 10px;
+    }
+
+    .user-auth form {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .user-auth label {
+        flex-grow: 1;
+    }
+}
