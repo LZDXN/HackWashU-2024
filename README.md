@@ -11,7 +11,8 @@ Have you ever encountered a writers block? Have you ever had trouble depicting a
 
 
 - Inspiration 
-Three of us had writers blocks, and JO's wife has written a book
+
+When we were trying to figure out how to come up with an idea, many of us had several different ideas. After discussing our passions, we, then realized three of us were trying to write a novel but were encountering issues of writers’ block. From here we knew that we wanted to do something that involved writing and how to overcome our individual writing blocks. So, we wanted to create a webapp that could do just that! 
 
 
 - Solution (Project Description)
