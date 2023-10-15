@@ -4,7 +4,7 @@ import UserAuth from "./components/UserAuth";
 import FileEditor from "./components/FileEditor";
 import CharacterSelector from "./components/CharacterSelector";
 import ImageGenerator from "./components/ImageGenerator";
-import FileSelector from "./components/FileSelector"; // Ensure to create this component
+import FileSelector from "./components/FileSelector";
 
 function App() {
   const [user, setUser] = useState(null);
